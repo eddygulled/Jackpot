@@ -102,7 +102,7 @@ var psb_scnd = psb_frst + 2; //forced win
 function simulateMatch() {
   for (var i = 0; i < jack.length; i++) {
     if (i == psb_frst || i == psb_scnd) {
-      jack_states.push("1");
+      jack_states.push("WIN _1");
     } else {
       let choice = state[Math.floor(Math.random() * 3)];
       jack_states.push(choice);
