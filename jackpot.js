@@ -35,7 +35,7 @@ const chars = [
 const state = ["1", "X", "2"];
 // _RANDOM TEAM NAME GENERATOR
 
-var number_of_teams // change to fit use
+var number_of_teams; // change to fit use
 var teamsGenerated = []; //array to store random teams generated
 
 //function to create single team name from random arrangement of characters defined above
@@ -62,7 +62,7 @@ function checkTeamName(_team_) {
 
 // function to generate an array of teams
 function generateTeams(numberOfTeams) {
-    number_of_teams = numberOfTeams
+  number_of_teams = numberOfTeams;
   for (var i = 1; i <= number_of_teams; i++) {
     let team_created = getTeamName();
     if (
@@ -90,11 +90,23 @@ function create_jack() {
     jack.push(singleMatch);
   }
 }
+
+/**********
+ * possible matches to score
+ * psb = [random team index with fixed match result]
+ ************ */
+var psb_frst = 3; //forced win
+var psb_scnd = psb_frst + 2; //forced win
+
 // create match results for each match in the jackpot match list
 function simulateMatch() {
   for (var i = 0; i < jack.length; i++) {
-    let choice = state[Math.floor(Math.random() * 3)];
-    jack_states.push(choice);
+    if (i == psb_frst || i == psb_scnd) {
+      jack_states.push("1");
+    } else {
+      let choice = state[Math.floor(Math.random() * 3)];
+      jack_states.push(choice);
+    }
   }
 }
 
@@ -107,7 +119,7 @@ function completeJackpot() {
   }
 }
 
-function session_run( number_of_teams) {
+function session_run(number_of_teams) {
   generateTeams(number_of_teams);
   create_jack();
   simulateMatch();
@@ -131,7 +143,5 @@ the whole project is created to run in chain
 * Expected betslip format {  var bet_slip = ['1', '2', 'X'] }
 */
 
-
-session_run(20)
+session_run(20);
 // console.log(jack_states)
-
